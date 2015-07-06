@@ -122,6 +122,13 @@ gulp.task('styles', function () {
     .pipe(gulp.dest('build/css'));
 });
 
+gulp.task('copyCss', function () {
+  src.styleSource = 'styleSource/**/*.{css}';
+  return gulp.src('styleSource/**')
+    .pipe(gulp.dest('build/css'));
+});
+
+
 // JavaScript
 gulp.task('scripts', function () {
   src.scripts = ['scripts/plugins.js', 'scripts/main.js'];
@@ -135,7 +142,7 @@ gulp.task('scripts', function () {
 
 // Build
 gulp.task('build', ['clean'], function (cb) {
-  runSequence(['vendor', 'assets', 'images', 'fonts', 'pages', 'styles', 'scripts'], cb);
+  runSequence(['vendor', 'assets', 'images', 'fonts', 'pages', 'styles', 'scripts', 'copyCss'], cb);
 });
 
 // Run BrowserSync
@@ -170,6 +177,7 @@ gulp.task('serve', ['build'], function () {
   gulp.watch(src.images, ['images']);
   gulp.watch(src.pages, ['pages']);
   gulp.watch(src.styles, ['styles']);
+  gulp.watch(src.styleSource, ['styleSource']);
   gulp.watch(src.scripts, ['scripts']);
   gulp.watch('./build/**/*.*', function(file) {
     browserSync.reload(path.relative(__dirname, file.path));

@@ -1,5 +1,8 @@
 doctype html
 html(class='no-js', lang='')
+  block vars
+    - var path = ''
+
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -12,21 +15,42 @@ html(class='no-js', lang='')
 
     <!-- Place favicon.ico in the root directory -->
 
-    link(rel='stylesheet', href='css/style.css')
+    
+    // Google web fonts
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,700,300,600,400&subset=cyrillic-ext,latin', rel='stylesheet', type='text/css')
 
+    // Stylesheets
+    link(href='#{path}css/bootstrap.css', rel='stylesheet')
+    link(href='#{path}css/flexslider.css', rel='stylesheet')
+    link(href='#{path}css/prettyPhoto.css', rel='stylesheet')
+    link(rel='stylesheet', href='#{path}css/font-awesome.css')
+    //if IE 7
+    link(rel='stylesheet', href='#{path}css/font-awesome-ie7.css')
+    link(rel='stylesheet', href='#{path}css/style-erica.css')
+    // Color Stylesheet - orange, blue, pink, brown, red or green
+    link(href='#{path}css/blue.css', rel='stylesheet')
+    link(href='#{path}css/bootstrap-responsive.css', rel='stylesheet')
+    link(href='#{path}css/my-style.css', rel='stylesheet')
+    
+    
+    
   body
     <!--[if lt IE 8]>
     p.browserupgrade.
       You are using an <strong>outdated</strong> browser.
       Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
     <![endif]-->
+    include ../pages/include/header.jade
+    include ../pages/include/nav.jade
 
     block body
 
     script(src='//ajax.googleapis.com/ajax/libs/jquery/#{pkgs.jquery}/jquery.min.js')
     script.
       window.jQuery || document.write('<script src="vendor/#{pkgs.jquery}/jquery.min.js"><\/script>')
-    script(src='js/bundle.js')
+    script(src='#{path}bootstrap.js')
+    script(src='#{path}js/bundle.js')
+
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID.
     script.

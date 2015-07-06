@@ -1,7 +1,32 @@
-ul.menu
-  li
-    a(href='/') home
-  li
-    a(href='') about
-  li
-    a(href='./people.html') people
+// Navigation Starts
+.navbar
+  .navbar-inner
+    .container
+      a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+        | Menu
+      .nav-collapse
+        // Navigation links starts here
+        ul.nav
+          // Main menu
+          li.dropdown
+            a.dropdown-toggle(href='/', data-toggle='dropdown') 
+              |Все о финансах
+              b.caret
+            ul.dropdown-menu
+              li
+                a(href='/people.html') Личные финансы
+              li
+                a(href='/') Финансы страны
+              li
+                a(href='/') Финансовые институты
+              li
+                a(href='/') Корпоративные финансы
+          li
+            a(href='/people.html') Рейтинг участников
+          li
+            a(href='/articles/business-model.html') Призовой фонд     
+          li
+            a(href='/articles/s7-business-model.html') О Проекте 
+        
+        
+// Navigation Ends
